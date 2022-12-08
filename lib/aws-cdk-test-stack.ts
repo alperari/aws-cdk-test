@@ -1,19 +1,33 @@
-import { Duration, Stack, StackProps } from 'aws-cdk-lib';
-import * as sns from 'aws-cdk-lib/aws-sns';
-import * as subs from 'aws-cdk-lib/aws-sns-subscriptions';
-import * as sqs from 'aws-cdk-lib/aws-sqs';
-import { Construct } from 'constructs';
+import { Stack, StackProps } from "aws-cdk-lib";
+import { Construct } from "constructs";
+import * as lambda from "aws-cdk-lib/aws-lambda";
+import * as apigw from "aws-cdk-lib/aws-apigateway";
 
 export class AwsCdkTestStack extends Stack {
   constructor(scope: Construct, id: string, props?: StackProps) {
     super(scope, id, props);
 
-    const queue = new sqs.Queue(this, 'AwsCdkTestQueue', {
-      visibilityTimeout: Duration.seconds(300)
+    const hello = new lambda.Function(this, "HelloHandler", {
+      // "HelloHandler" is  local identity of the construct,  It’s an ID that has to be unique amongst construct within the same scope
+
+      //fields below are "props" of the current stack
+      runtime: lambda.Runtime.NODEJS_14_X, // execution environment
+      code: lambda.Code.fromAsset("lambda"), // code loaded from "lambda" directory
+      handler: "hello.handler", // file is "hello", function is "handler"
     });
 
-    const topic = new sns.Topic(this, 'AwsCdkTestTopic');
+    new apigw.LambdaRestApi(this, "Endpoint", {
+      handler: hello,
+    });
 
-    topic.addSubscription(new subs.SqsSubscription(queue));
+    const mylambda = lambda.Function.fromFunctionName(
+      this,
+      "Lambda:mylambda",
+      "mylambda"
+    );
+
+    new apigw.LambdaRestApi(this, "ApiGateway-Endpoint-mylambda", {
+      handler: mylambda,
+    });
   }
 }
