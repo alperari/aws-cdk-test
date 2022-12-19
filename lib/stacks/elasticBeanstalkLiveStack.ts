@@ -3,7 +3,6 @@ import { Construct } from "constructs";
 import * as cdk from "aws-cdk-lib";
 import * as elasticbeanstalk from "aws-cdk-lib/aws-elasticbeanstalk";
 import * as iam from "aws-cdk-lib/aws-iam";
-import { Aws } from "@aws-cdk/core";
 
 const appName = "alperquant-api";
 const stage = "-live";
@@ -44,10 +43,7 @@ export class ElasticBeanstalkLiveStack extends Stack {
     });
 
     //Environment variables for elastic beanstalk environment
-    const envVars = [
-      ["AWS_REGION", Aws.REGION || "eu-central-1"],
-      ["hello", "world"],
-    ];
+    const envVars = [["hello", "world"]];
     const optionSettingProperties: elasticbeanstalk.CfnEnvironment.OptionSettingProperty[] =
       [
         {

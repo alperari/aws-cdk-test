@@ -3,7 +3,6 @@ import { Construct } from "constructs";
 import * as cdk from "aws-cdk-lib";
 import * as elasticbeanstalk from "aws-cdk-lib/aws-elasticbeanstalk";
 import * as iam from "aws-cdk-lib/aws-iam";
-import { Aws } from "@aws-cdk/core";
 
 const appName = "alperquant-api";
 const stage = "-dev";
