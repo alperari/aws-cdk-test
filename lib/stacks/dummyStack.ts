@@ -30,7 +30,7 @@ export class DummyLambdaStack extends Stack {
 
       //fields below are "props" of the current stack
       runtime: lambda.Runtime.NODEJS_14_X, // execution environment
-      code: lambda.Code.fromAsset(path.join("./", "lambdas")), // code loaded from "lambda" directory
+      code: lambda.Code.fromAsset(path.join("lib", "lambdas")), // code loaded from "lambda" directory
       handler: "hello.handler", // file is "hello", function is "handler"
     });
   }
