@@ -19,5 +19,8 @@ jobs:
       - name: ls
         run: ls
 
-      - run: ls lib
-      - run: ls lib/lambdas
+      - name: ls lib
+        run: ls lib
+
+      - name: ls lib/lambdas
+        run: ls lib/lambdas
