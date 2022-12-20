@@ -1,7 +1,6 @@
-name: Bootstrap AWS CDK
+name: sample
 on:
-  repository_dispatch:
-    types: [bootstrap]
+  push:
     branches:
       - main
 
