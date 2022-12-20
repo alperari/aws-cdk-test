@@ -26,6 +26,7 @@
     "@aws-cdk/aws-iam": "^1.182.0",
     "aws-cdk-lib": "2.53.0",
     "constructs": "^10.0.0",
-    "dotenv": "^16.0.3"
+    "dotenv": "^16.0.3",
+    "path": "^0.12.7"
   }
 }
