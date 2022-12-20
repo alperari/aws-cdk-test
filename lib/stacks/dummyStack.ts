@@ -1,6 +1,7 @@
 import { Stack, StackProps } from "aws-cdk-lib";
 import { Construct } from "constructs";
 import * as lambda from "aws-cdk-lib/aws-lambda";
+import * as path from "path";
 
 export class DummyLambdaStack extends Stack {
   constructor(scope: Construct, id: string, props?: StackProps) {
@@ -29,7 +30,7 @@ export class DummyLambdaStack extends Stack {
 
       //fields below are "props" of the current stack
       runtime: lambda.Runtime.NODEJS_14_X, // execution environment
-      code: lambda.Code.fromAsset("lib/lambdas"), // code loaded from "lambda" directory
+      code: lambda.Code.fromAsset(path.join(__dirname, "lambdas")), // code loaded from "lambda" directory
       handler: "hello.handler", // file is "hello", function is "handler"
     });
   }

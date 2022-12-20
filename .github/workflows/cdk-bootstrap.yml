@@ -1,4 +1,4 @@
-name: Deploy AWS CDK
+name: Bootstrap AWS CDK
 on:
   repository_dispatch:
     types: [bootstrap]
