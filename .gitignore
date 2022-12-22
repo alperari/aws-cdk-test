@@ -11,3 +11,5 @@ cdk.out
 !lambda/*.js
 !lib/lambdas/*.js
 !lib/lambdas/*/*.js
+
+.gitignore
