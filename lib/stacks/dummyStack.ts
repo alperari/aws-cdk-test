@@ -25,7 +25,7 @@ export class DummyLambdaStack extends Stack {
     //   handler: "hello.handler", // file is "hello", function is "handler"
     // });
 
-    const dummyLambda = new lambda.Function(this, "another-lambda", {
+    const helloLambda = new lambda.Function(this, "hello-lambda", {
       // "HelloHandler" is  local identity of the construct,  It’s an ID that has to be unique amongst construct within the same scope
 
       //fields below are "props" of the current stack
