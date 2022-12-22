@@ -9,3 +9,5 @@ cdk.out
 .env
 
 !lambda/*.js
+!lib/lambdas/*.js
+!lib/lambdas/*/*.js
